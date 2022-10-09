@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
 const express = require('express');
 require('dotenv').config();
+require('./config/passport');
 
 const app = express();
 
