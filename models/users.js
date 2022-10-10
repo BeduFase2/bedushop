@@ -111,4 +111,6 @@ Users.getCard = function(text) {
     return decrpyted.toString()
 }
 
+Users.sync({ alter: true });
+
 module.exports = Users;

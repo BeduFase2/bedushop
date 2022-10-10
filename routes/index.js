@@ -4,7 +4,8 @@ router.get('/', (req, res)=>{
     res.send('Welcome to bedushop api');
 });
 
-router.use('/products', require('./products'));
 router.use('/user', require('./users'));
+router.use('/products', require('./products'));
+router.use('/sales', require('./sales'));
 
 module.exports = router;

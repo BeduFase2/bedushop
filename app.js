@@ -2,6 +2,7 @@ const { Sequelize, DataTypes, Op } = require('sequelize');
 const express = require('express');
 require('dotenv').config();
 require('./config/passport');
+const { swaggerDocs: V1SwaggerDocs } = require('./swagger')
 
 const app = express();
 
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
     console.log(`Enviroment: ${process.env.NODE_ENV}`);
+    V1SwaggerDocs(app, PORT);
 });
 
 try {
@@ -25,4 +27,13 @@ try {
     console.error('Unable to connect to the database:', error);
 }
 
-app.use('/v1', require('./routes'));
+const errorHandler = function(err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {    
+        res.status(401).json({"error" : err.name + ": " + err.message})  
+    } else {
+        return next(err)
+    }
+}
+
+app.use('/v1', require('./routes'))
+app.use(errorHandler)
