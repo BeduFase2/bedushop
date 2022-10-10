@@ -12,7 +12,7 @@ const Users = sequelize.define('Users', {
         autoIncrement: true
     },
     username: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(30),
         allowNull: false,
         unique: true,
         validate:{
@@ -21,12 +21,16 @@ const Users = sequelize.define('Users', {
         }
     },
     name: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(30),
         allowNull: false,
     },
     surname: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(30),
         allowNull: false,
+    },
+    direction: {
+        type: DataTypes.TEXT,
+        allowNull: false
     },
     email: {
         type: DataTypes.TEXT,
@@ -37,19 +41,18 @@ const Users = sequelize.define('Users', {
         }
     },
     salt: {
-        type: DataTypes.TEXT
+        type: DataTypes.TEXT,
+        allowNull: false
     },
     hash: {
-        type: DataTypes.TEXT
-    },
-    address: {
-        type: DataTypes.TEXT
+        type: DataTypes.TEXT,
+        allowNull: false
     },
     card: {
         type: DataTypes.TEXT
     },
-    type: {
-        type: DataTypes.TEXT,
+    seller: {
+        type: DataTypes.BOOLEAN,
     }
 }, {
     freezeTableName: false,

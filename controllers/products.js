@@ -7,12 +7,33 @@ function createProduct(req, res) {
     .then(producto => 
         res.status(201).send(producto)
     )
+    .catch(() => 
+        res.status(400).send('Error')
+    )
 }
 
 function getAllProducts(req, res) {
     Product.findAll()
     .then(products => 
         res.status(200).send(products)
+    )
+    .catch(() => 
+        res.status(400).send('Error')
+    )
+}
+
+function getAllProductsBySeller(req,res)
+{
+  const id = req.params.id;
+  Product.findAll({where:{
+    sellerID: { [Op.eq]: id}
+  }
+  })
+  .then(products => 
+    res.status(200).send(products)  
+  )
+  .catch(() => 
+        res.status(400).send('Error')
     )
 }
 
@@ -26,6 +47,9 @@ function getProductById(req, res) {
   .then(products => 
       res.status(200).send(products)
   )
+  .catch(() => 
+        res.status(400).send('Error')
+    )
 }
 
 function updateProduct(req, res) {
@@ -54,11 +78,15 @@ function deleteProduct(req, res) {
   .then(r =>
     res.status(201).send(`Se elimino el producto ${id}`)
   )
+  .catch(() => 
+        res.status(400).send('Error')
+    )
 }
 
 module.exports = {
   createProduct,
   getAllProducts,
+  getAllProductsBySeller,
   getProductById,
   updateProduct,
   deleteProduct

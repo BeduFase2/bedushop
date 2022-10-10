@@ -16,7 +16,6 @@ app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
     console.log(`Enviroment: ${process.env.NODE_ENV}`);
 });
-
 try {
     sequelize.authenticate();
     sequelize.sync();
