@@ -50,23 +50,6 @@ function getSalesBySeller(req,res){
     )
 }
 
-function deleteSaleProduct(req, res) {
-    const id = req.params.id;
-    const productId = req.params.productId;
-    Sale.destroy({
-      where: {
-        id: {[Op.eq]: id},
-        productID: {[Op.eq]:productId}
-      }
-    })
-    .then(r =>
-      res.status(201).send(`Se elimino la venta ${id} con el producto ${productId}`)
-    )
-    .catch(() => 
-          res.status(400).send('Error')
-      )
-}
-
 function deleteWholeSale(req,res){
     const id = req.params.id;
     Sale.destroy({
@@ -87,7 +70,6 @@ module.exports = {
     getAllSales,
     getSaleById,
     getSalesBySeller,
-    deleteSaleProduct,
     deleteWholeSale
 }
 

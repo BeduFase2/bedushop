@@ -9,8 +9,8 @@ const {
 
 router.get('/', getAllReviews)
 router.post('/', createReview)
-router.get('/:id&:productID',getReviewById)
-router.put('/:id&:productID', updateReview)
-router.delete('/:id&:productID', deleteReview)
+router.get('/:productID&:saleID',getReviewById)
+router.put('/:productID&:saleID', updateReview)
+router.delete('/:productID&:saleID', deleteReview)
 
 module.exports = router;

@@ -24,8 +24,13 @@ function getAllReviews(req, res) {
 
 function getReviewById(req,res)
 {
-    const id = req.params.id;
-    Review.findByPk(id)
+    const productID = req.params.productID;
+    const saleID = req.params.saleID;
+    Review.findAll({where:{
+        productID: { [Op.eq]: productID},
+        saleID: { [Op.eq]: saleID}
+      }
+      })
     .then(review => 
         res.status(200).send(review)    
     )
@@ -37,10 +42,12 @@ function getReviewById(req,res)
 function updateReview(req,res)
 {
     const body = req.body;
-    const id = req.params.id;
+    const productID = req.params.productID;
+    const saleID = req.params.saleID;
     Review.update(body, {
         where: {
-        id: id
+        productID: { [Op.eq]: productID},
+        saleID: { [Op.eq]: saleID}
         }
     })
     .then(review =>
@@ -52,10 +59,12 @@ function updateReview(req,res)
 }
 
 function deleteReview(req, res) {
-    const id = req.params.id;
+    const productID = req.params.productID;
+    const saleID = req.params.saleID;
     Review.destroy({
       where: {
-        id: id
+        productID: { [Op.eq]: productID},
+        saleID: { [Op.eq]: saleID}
       }
     })
     .then(r =>
