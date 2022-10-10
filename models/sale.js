@@ -10,8 +10,7 @@ const Sale = sequelize.define('Sale', {
     },
     productID: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
+        allowNull: false
     },
     sellerID: {
         type: DataTypes.INTEGER,
