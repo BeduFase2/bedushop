@@ -75,7 +75,7 @@ function deleteWholeSale(req,res){
         }
       })
       .then(r =>
-        res.status(201).send(`Se elimino la venta ${id} con el producto ${productId}`)
+        res.status(201).send(`Se elimino la venta ${id}`)
       )
       .catch(() => 
             res.status(400).send('Error')
