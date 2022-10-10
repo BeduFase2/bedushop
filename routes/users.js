@@ -8,21 +8,6 @@ const {
 } = require('../controllers/users')
 const auth = require('./auth');
 
-let components = {
-    "schemas": {
-      "user": {
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      }
-    }
-}
-
 /**
  * @openapi
  * /v1/user:
