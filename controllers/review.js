@@ -68,7 +68,7 @@ function deleteReview(req, res) {
       }
     })
     .then(r =>
-      res.status(201).send(`Se elimino la reseña ${id}`)
+      res.status(201).send(`Se elimino la reseña del producto ${productID} y la venta ${saleID}`)
     )
     .catch(() => 
           res.status(400).send('Error')
